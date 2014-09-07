@@ -1,14 +1,13 @@
-#include <SPI.h>
 
 // MotorShield A Channel
-const int A_DIRECTION = 53;
-const int A_PWM = 51; 
-const int A_BRAKE = 48;
+const int A_DIRECTION = 12;
+const int A_PWM = 3; 
+const int A_BRAKE = 9;
 
 // MotorShield B Channel
-const int B_DIRECTION = 52;
-const int B_PWM = 50;
-const int B_BRAKE = 49;
+const int B_DIRECTION = 11;
+const int B_PWM = 11;
+const int B_BRAKE = 8;
 
 //MotorShield current sensing
 const int SNS0 = A0;
@@ -21,12 +20,12 @@ void setup() {
   Serial.println("Starting serial communications...");
   
   //Setup Channel A
-  pinMode(53, OUTPUT); //Initiates Direction Channel A pin
-  pinMode(48, OUTPUT); //Initiates Brake Channel A pin
+  pinMode(12, OUTPUT); //Initiates Direction Channel A pin
+  pinMode(9, OUTPUT); //Initiates Brake Channel A pin
   
   //Setup Channel B
-  pinMode(52, OUTPUT); //Initiates Direction Channel B pin
-  pinMode(49, OUTPUT); //Initiates Brake Channel B pin
+  pinMode(11, OUTPUT); //Initiates Direction Channel B pin
+  pinMode(8, OUTPUT); //Initiates Brake Channel B pin
   
   delay(2000);
   
@@ -34,6 +33,26 @@ void setup() {
 
 void loop(){
 
+  disengageBrake();
+  forward();
+  delay(3000);
+  engageBrake();
+  delay(2000);
+  disengageBrake();
+  backward();
+  delay(3000);
+  engageBrake();
+  delay(2000);
+  disengageBrake();
+  right();
+  delay(3000);
+  engageBrake();
+  delay(2000);
+  disengageBrake();
+  left();
+  delay(3000);
+  engageBrake();
+  delay(2000);
 }
 
 /////////////////////????////
